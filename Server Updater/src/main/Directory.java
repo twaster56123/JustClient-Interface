@@ -8,7 +8,7 @@ import java.io.File;
 public class Directory{
 
 	//Field
-	private String path = "C:/Users/Eric/Desktop/Server Updater";
+	private String path = "C:\\zzzzServer Updater Files";
 	private File[] files;
 	private String currentVersion;
 	

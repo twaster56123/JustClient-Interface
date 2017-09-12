@@ -39,7 +39,7 @@ public class PostMaster extends Changed{
 					int temp = Integer.parseInt(end);
 					temp++;
 					end = ""+temp;
-					File indexFile = new File(getPath()+"/log"+end+".changed");
+					File indexFile = new File(getPath()+"\\log"+end+".changed");
 					
 					Scanner index = new Scanner(indexFile);
 					
@@ -50,15 +50,15 @@ public class PostMaster extends Changed{
 					while(!indexRead.equals("end")){
 						
 						sendLine("~Download File~");
-						Thread.sleep(100);
+						Thread.sleep(2);
 						//File
 						File file = new File(indexRead);
 						//Send File Abs Path
 						sendLine("Name:"+indexRead);
-						Thread.sleep(100);
+						Thread.sleep(2);
 						//Send File Size
 						sendLine("Size:"+file.length());
-						Thread.sleep(100);
+						Thread.sleep(2);
 						//Send File Contents
 						byte[] buffer = new byte[1024];
 						FileInputStream fis = new FileInputStream(file);
@@ -68,7 +68,7 @@ public class PostMaster extends Changed{
 							os.flush();
 						}
 						
-						Thread.sleep(100);
+						Thread.sleep(2);
 						
 						indexRead = index.nextLine();
 						
@@ -79,7 +79,14 @@ public class PostMaster extends Changed{
 				}
 					
 				
-			}catch(Exception ex){}
+			}catch(Exception ex){
+				try{
+					os.close();
+					is.close();
+					Thread.currentThread().join();
+				}catch(Exception extra){}
+				System.out.println(ex.getLocalizedMessage());
+			}
 		}
 		
 	}

@@ -57,9 +57,9 @@ public class Downloader extends Compile{
 	
 	public void makeFile(String serverPath){
 		try{
-			
-			String breakUp[] = serverPath.split("Server Updater");
-			String path = getPath()+breakUp[1];
+
+			String breakUp = serverPath.replace("C:\\zzzzServer Updater Files", "");
+			String path = getPath()+breakUp;
 			
 			downloadingFile = new File(path);
 			File Folders = new File(path.replace(downloadingFile.getName(), ""));

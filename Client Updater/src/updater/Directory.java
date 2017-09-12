@@ -3,6 +3,8 @@
  */
 package updater;
 
+import gui.FileExplorer;
+
 import java.io.File;
 
 public class Directory{
@@ -17,6 +19,11 @@ public class Directory{
 	private boolean compileUptoDate = false;
 	
 	//Methods
+	public void selectPath(){
+		FileExplorer exp = new FileExplorer();
+		path = exp.getNewPath();
+	}
+	
 	public boolean getCompileUptoDate(){
 		return(compileUptoDate);
 	}

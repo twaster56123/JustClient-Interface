@@ -16,7 +16,7 @@ public class Compile extends Directory{
 	Main main;
 	
 	public void compileUpdates(Main main){
-		
+
 		this.main = main;
 		
 		File compileFile = new File(getPath()+getCompileLog());

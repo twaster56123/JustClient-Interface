@@ -20,25 +20,31 @@ public class Client extends PostOffice{
 		
 		try{
 			
+			selectPath();
+			
 			setVersion();
 			
 			boolean connected=false;
 			while(!connected){
-			
-				//Local Address
-				ip=InetAddress.getLocalHost().getHostAddress();
 				
-				//Hamachi
-				//ip="0";
+				try{
 				
-				//Ip Address
-				//ip="";
-				
-				
-				sock = new Socket(ip,port);
-				sock.setTcpNoDelay(true);
-				
-				connected=true;
+					//Local Address
+					ip=InetAddress.getLocalHost().getHostAddress();
+					
+					//Hamachi
+					//ip="0";
+					
+					//Ip Address
+					//ip="";
+					
+					
+					sock = new Socket(ip,port);
+					sock.setTcpNoDelay(true);
+					
+					connected=true;
+					
+				}catch(Exception ex){}
 				
 			}
 			

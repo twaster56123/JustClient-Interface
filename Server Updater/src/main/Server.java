@@ -42,13 +42,23 @@ public class Server extends PostOffice{
 	//Recursive Client listening
 	private void newEars(){
 		try{
-			Socket accept = ss.accept();
-			accept.setTcpNoDelay(true);
 			
-			System.out.println("Connection made: "+accept.getInetAddress());
+			final Socket accept = ss.accept();
 			
-			receiveMail(accept);
-			newEars();
+			new Thread(new Runnable(){ public void run(){
+				
+				try{
+					accept.setTcpNoDelay(true);
+				}catch(Exception ded){}
+				
+				receiveMail(accept);
+				
+				System.out.println("Connection made: "+accept.getInetAddress());
+				
+				newEars();
+				
+				}
+			}).start();
 		}catch(Exception ex){
 			System.err.println("Server(newEars): Something Went Wrong! Shutting Down...");
 			System.exit(0);
